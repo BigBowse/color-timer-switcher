@@ -23,19 +23,19 @@ function onButtonClick(event) {
     elements: { delay, step, amount },
   } = event.currentTarget;
 
-  let delayEl = Number(delay.value);
-  const stepEl = Number(step.value);
-  const amounEl = Number(amount.value);
+  let delayVal = Number(delay.value);
+  const stepVal = Number(step.value);
+  const amountVal = Number(amount.value);
 
-  for (let i = 1; i <= amounEl; i += 1) {
-    createPromise(i, delayEl)
+  for (let i = 1; i <= amountVal; i += 1) {
+    createPromise(i, delayVal)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    delayEl += stepEl;
+    delayVal += stepVal;
   }
 }
 
