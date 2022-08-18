@@ -2,7 +2,6 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const buttonStart = document.querySelector('[data-start]');
 const refs = {
   days: document.querySelector('span[data-days]'),
   hours: document.querySelector('span[data-hours]'),
@@ -68,7 +67,6 @@ function deltaTimeUpdate() {
 
     if (deltaTime <= 0) {
       clearInterval(intervalId);
-      isActive = false;
       return;
     }
 
@@ -77,11 +75,10 @@ function deltaTimeUpdate() {
 }
 
 function onButtonClick() {
-    let isActive = true;
-  
+    buttonStart.disabled = true;
     intervalId = setInterval(deltaTimeUpdate, 1000);
 }
 
 buttonStart.addEventListener('click', onButtonClick);
-buttonStart.disabled = true;
+
 
